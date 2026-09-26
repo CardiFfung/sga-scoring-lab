@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+data/raw/
+data/processed/
+tableau/data/
+tableau/*.hyper
+tableau/*.twbx
+tableau/*.twb
+START_HERE.html
+dist/
+hyperd.log
+*.log
+
+# Local presentation and publishing notes
+docs/PORTFOLIO.md
+START_HERE.md

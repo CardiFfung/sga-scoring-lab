@@ -1,0 +1,144 @@
+{
+  "selected_regular": "Rolling10",
+  "selected_playoffs": "TransferAdjusted",
+  "validation_regular_mae": {
+    "GradientBoosting": 6.167460078925944,
+    "Ridge": 6.246324090307996,
+    "Rolling10": 6.131578947368421
+  },
+  "validation_playoff_mae": {
+    "Rolling10": 6.095652173913044,
+    "TransferAdjusted": 5.821304347826087
+  },
+  "fits": [
+    {
+      "season": "2022-23",
+      "model": "Rolling10",
+      "n_train": 151,
+      "train_end": "2022-03-21",
+      "test_start": "2022-10-19"
+    },
+    {
+      "season": "2022-23",
+      "model": "Ridge",
+      "n_train": 151,
+      "train_end": "2022-03-21",
+      "test_start": "2022-10-19"
+    },
+    {
+      "season": "2022-23",
+      "model": "GradientBoosting",
+      "n_train": 151,
+      "train_end": "2022-03-21",
+      "test_start": "2022-10-19"
+    },
+    {
+      "season": "2023-24",
+      "model": "Rolling10",
+      "n_train": 219,
+      "train_end": "2023-04-06",
+      "test_start": "2023-10-25"
+    },
+    {
+      "season": "2023-24",
+      "model": "Ridge",
+      "n_train": 219,
+      "train_end": "2023-04-06",
+      "test_start": "2023-10-25"
+    },
+    {
+      "season": "2023-24",
+      "model": "GradientBoosting",
+      "n_train": 219,
+      "train_end": "2023-04-06",
+      "test_start": "2023-10-25"
+    },
+    {
+      "season": "2024-25",
+      "model": "Rolling10",
+      "n_train": 294,
+      "train_end": "2024-04-14",
+      "test_start": "2024-10-24"
+    },
+    {
+      "season": "2024-25",
+      "model": "Ridge",
+      "n_train": 294,
+      "train_end": "2024-04-14",
+      "test_start": "2024-10-24"
+    },
+    {
+      "season": "2024-25",
+      "model": "GradientBoosting",
+      "n_train": 294,
+      "train_end": "2024-04-14",
+      "test_start": "2024-10-24"
+    },
+    {
+      "season": "2025-26",
+      "model": "Rolling10",
+      "n_train": 370,
+      "train_end": "2025-04-08",
+      "test_start": "2025-10-21"
+    },
+    {
+      "season": "2025-26",
+      "model": "Ridge",
+      "n_train": 370,
+      "train_end": "2025-04-08",
+      "test_start": "2025-10-21"
+    },
+    {
+      "season": "2025-26",
+      "model": "GradientBoosting",
+      "n_train": 370,
+      "train_end": "2025-04-08",
+      "test_start": "2025-10-21"
+    }
+  ],
+  "calibration": [
+    {
+      "model": "GradientBoosting",
+      "phase": "Playoffs",
+      "n": 23,
+      "absolute_residual_q80": 12.051518745358244
+    },
+    {
+      "model": "GradientBoosting",
+      "phase": "Regular Season",
+      "n": 76,
+      "absolute_residual_q80": 9.256298269519544
+    },
+    {
+      "model": "Ridge",
+      "phase": "Playoffs",
+      "n": 23,
+      "absolute_residual_q80": 12.619181170150572
+    },
+    {
+      "model": "Ridge",
+      "phase": "Regular Season",
+      "n": 76,
+      "absolute_residual_q80": 9.495510634648944
+    },
+    {
+      "model": "Rolling10",
+      "phase": "Playoffs",
+      "n": 23,
+      "absolute_residual_q80": 10.899999999999999
+    },
+    {
+      "model": "Rolling10",
+      "phase": "Regular Season",
+      "n": 76,
+      "absolute_residual_q80": 10.200000000000003
+    },
+    {
+      "model": "TransferAdjusted",
+      "phase": "Playoffs",
+      "n": 23,
+      "absolute_residual_q80": 13.129999999999995
+    }
+  ],
+  "probability_note": "Exploratory empirical residual probability, not independently tuned classification; playoff calibration n=23."
+}

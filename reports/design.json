@@ -1,0 +1,42 @@
+{
+  "features": [
+    "pts_l5",
+    "pts_l10",
+    "pts_sd10",
+    "min_l10",
+    "fga_l10",
+    "fta_l10",
+    "ts_l10",
+    "season_pts_prior",
+    "home",
+    "neutral_site",
+    "rest_days",
+    "appearance_gap",
+    "opp_drtg_prior10",
+    "opp_pace_prior10",
+    "okc_ortg_prior10"
+  ],
+  "candidates": {
+    "Rolling10": {
+      "type": "last 10 appearances mean"
+    },
+    "Ridge": {
+      "alpha": 100.0
+    },
+    "GradientBoosting": {
+      "n_estimators": 120,
+      "max_depth": 2,
+      "min_samples_leaf": 20,
+      "learning_rate": 0.03,
+      "loss": "huber",
+      "random_state": 42
+    }
+  },
+  "validation": "2024-25",
+  "test": "2025-26",
+  "origin": "one fit before each season; unchanged through that season playoffs",
+  "transfer": "previous playoff residual mean shrunk by n/(n+10); no current-season adjustment",
+  "selection": "minimum 2024-25 regular-season MAE; baseline eligible",
+  "interval": "phase-specific 2024-25 absolute residuals, finite-sample 80% quantile",
+  "seed": 42
+}

@@ -1,0 +1,28 @@
+{
+  "sga_games": 503,
+  "regular_games": 448,
+  "playoff_games": 55,
+  "team_rows": 17758,
+  "shot_rows": 9580,
+  "unique_keys": true,
+  "shots_reconcile_to_boxscores": true,
+  "scoring_identity": true,
+  "feature_missingness": {
+    "pts_l5": 3,
+    "pts_l10": 3,
+    "pts_sd10": 3,
+    "min_l10": 3,
+    "fga_l10": 3,
+    "fta_l10": 3,
+    "ts_l10": 3,
+    "season_pts_prior": 1,
+    "home": 0,
+    "neutral_site": 0,
+    "rest_days": 1,
+    "appearance_gap": 1,
+    "opp_drtg_prior10": 4,
+    "opp_pace_prior10": 4,
+    "okc_ortg_prior10": 3
+  },
+  "model_eligible": 493
+}

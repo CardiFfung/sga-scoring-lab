@@ -1,8 +1,8 @@
 # SGA Scoring Lab
 
-Scoring trends, shot profiles and pregame forecasts for Shai Gilgeous-Alexander.
+Scoring trends, shot profiles and next-appearance scoring forecasts for Shai Gilgeous-Alexander.
 
-Built to explore how SGA scores and how much recent form tells us about his next game. Covers **seven Oklahoma City seasons, 2019–20 to 2025–26**, with separate regular-season and playoff analysis, a Python forecasting pipeline and a generated Tableau workbook.
+Built to explore how SGA scores and how much recent form tells us about his next appearance. Covers **seven Oklahoma City seasons, 2019–20 to 2025–26**, with separate regular-season and playoff analysis, a Python forecasting pipeline and a generated Tableau workbook.
 
 **Python · pandas · scikit-learn · Tableau · NBA Stats**  
 448 regular-season appearances · 55 playoff appearances · 9,580 shot attempts
@@ -20,7 +20,7 @@ Built to explore how SGA scores and how much recent form tells us about his next
 
 ![Scoring components by season and true shooting by competition](reports/01_evolution.png)
 
-The rise in scoring was not driven primarily by three-pointers. Two-point scoring grew by approximately **6.9 points per game**, while free throws added **3.8**. These components explain the change in points; separating increased shot volume from improved accuracy requires examining attempts and conversion rates as well.
+The rise in scoring was not driven primarily by three-pointers. Two-point scoring grew by approximately **6.9 points per game**, while free throws added **3.8**. This section decomposes the scoring increase by point source; it does not separately attribute that increase to changes in shot volume and conversion rates.
 
 Regular-season and playoff results retain separate denominators throughout. Seasons without a playoff appearance are missing observations, not zero-point seasons.
 
@@ -32,7 +32,7 @@ In 2025–26, midrange attempts represented **26.9%** of regular-season shots an
 
 This supports a descriptive finding: the latest playoff shot profile shifted toward midrange attempts while efficiency declined. The data do not isolate the effects of opponent defense, injuries or shot difficulty.
 
-## 3. Predicting the next appearance
+## 3. Next-appearance scoring forecasts
 
 The target is SGA's points in his next appearance, **conditional on playing**. Inputs include lagged scoring, minutes, attempts, efficiency, rest, venue and estimated team/opponent context. Actual game minutes and current-game outcomes are excluded from prediction inputs.
 
@@ -46,7 +46,7 @@ Learned models are fitted once before each evaluation season using earlier regul
 
 ![Final-test model errors, with validation-selected models highlighted](reports/02_model_evidence.png)
 
-| Model | Regular-season MAE, 68 games | Playoff MAE, 15 games |
+| Model | Regular-season MAE, 68 games (his actual appearances in 2025–26) | Playoff MAE, 15 games |
 | --- | ---: | ---: |
 | Last ten appearances | **5.78 — selected** | 7.01 |
 | Ridge regression | 5.77 | 6.59 |
@@ -62,7 +62,7 @@ The selected regular-season forecast's nominal 80% intervals covered **85.3%** o
 ## Implementation notes
 
 - **Data quality:** reconcile every game's shot attempts and makes against box scores; preserve source hashes and acquisition/import provenance.
-- **Leakage prevention:** calculate features using strictly earlier dates; test that changing current/future outcomes cannot change pregame inputs.
+- **Leakage prevention:** calculate features using strictly earlier dates; test that changing current/future outcomes cannot change forecast inputs.
 - **Model discipline:** benchmark learned models against recent form and select on validation rather than the best final-test score.
 - **Evaluation:** report failed playoff transfer, interval width, large misses and small-sample uncertainty alongside headline metrics.
 
@@ -70,7 +70,7 @@ The selected regular-season forecast's nominal 80% intervals covered **85.3%** o
 
 ## Tableau analysis
 
-The Python pipeline produces a native Tableau workbook with four dashboards and twelve worksheets:
+The Python pipeline produces a native Tableau workbook with four dashboards, twelve worksheets, eleven worksheet filter definitions, three dashboard filter controls and an embedded Hyper extract:
 
 | Dashboard | Analytical purpose |
 | --- | --- |
@@ -79,7 +79,9 @@ The Python pipeline produces a native Tableau workbook with four dashboards and 
 | Compare Phases | Compare regular-season and playoff outcomes within the same season |
 | Predictions | Inspect model errors and actual versus predicted points, with a competition filter |
 
-The figures above are Python analysis exports, not screenshots of Tableau. The source repository includes the workbook builder; the generated workbook and extracts are local outputs. After running the pipeline, open `tableau/SGA_Scoring_Lab.twbx` in Tableau. Native loading has been checked; full visual and interactive verification of every dashboard remains incomplete. [Workbook guide](docs/TABLEAU.md).
+The four figures above are generated by Matplotlib in `scripts/report.py`. Python computes the analytical metrics and forecasts; `scripts/build_tableau.py` packages those outputs into a Tableau workbook for visualization, filtering and standard aggregation, with no custom calculated fields or parameters.
+
+The generated workbook and extract are excluded from version control. Run the pipeline below to produce `tableau/SGA_Scoring_Lab.twbx`, then open it in Tableau. [Workbook guide](docs/TABLEAU.md).
 
 ## Repository structure
 
